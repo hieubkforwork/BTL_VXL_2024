@@ -6,3 +6,6 @@
  */
 
 
+void button_read_mode(){
+
+}

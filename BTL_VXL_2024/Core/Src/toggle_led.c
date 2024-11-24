@@ -6,5 +6,5 @@
  */
 
 void toggle_led(){
-	HAL_GPIO_TogglePin(GPIOA, GPIO_P)
+	HAL_GPIO_TogglePin(GPIO_LED, LED_PIN);
 }

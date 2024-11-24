@@ -94,9 +94,9 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim2);
 
   SCH_ADD_TASK(toggle_led, 1, 1000);
-  SCH_ADD_TASK(toggle_led, 1, 1000);
-  SCH_ADD_TASK(toggle_led, 1, 1000);
-  SCH_ADD_TASK(toggle_led, 1, 1000);
+  //SCH_ADD_TASK(fsm_auto_run, 1, 1000);
+  //SCH_ADD_TASK(fsm_man_run, 1, 1000);
+  //SCH_ADD_TASK(fsm_night_run, 1, 1000);
   /* USER CODE END 2 */
 
   /* Infinite loop */

@@ -8,6 +8,6 @@
 #ifndef INC_MODE_READER_H_
 #define INC_MODE_READER_H_
 
-
+void button_read_mode();
 
 #endif /* INC_MODE_READER_H_ */
