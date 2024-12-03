@@ -5,27 +5,75 @@
  *      Author: User
  */
 
-
 void fsm_for_input_processing(void) {
-    getKeyInput();
+	getKeyInput();
 
-    if (button_flag[0]) {
-        button_flag[0] = 0;
+	switch (state) {
+	case IDLE:
+		if (button_flag[0] == 1) {
+			button_flag[0];
+			state = MODE;
+		}
+		break;
+	case MODE:
+		if (button_flag[0] == 1) {
+			button_flag[0];
+			state = AUTO;
+		}
+		if (button_flag[1] == 1) {
+			button_flag[1];
+			state = NIGHT;
+		}
+		if (button_flag[2] == 1) {
+			button_flag[2];
+			state = ADJUST;
+		}
+		if (button_flag[3] == 1) {
+			button_flag[3];
+			state = MANUAL;
+		}
+		break;
 
-    }
+	}
+	case AUTO:
+	if (button_flag[0] == 1) {
+		button_flag[0];
+		state = IDLE;
+	}
+	break;
+	case NIGHT:
+	if (button_flag[0] == 1) {
+		button_flag[0];
+		state = IDLE;
 
-    if (button_flag[1]) {
-        button_flag[1] = 0;
+	}
+	break;
+	case ADJUST:
+	if (button_flag[0] == 1) {
+		button_flag[0];
+		if (valid)
+			state = IDLE;
 
-    }
+	}
+	if (button_flag[1] == 1) {
+		button_flag[1];
+		adj_state = ADJ_MODE;
+	}
+	if (button_flag[2] == 1) {
+		button_flag[2];
+		adj_state = INCREASE_TIME;
+	}
+	if (button_flag[3] == 1) {
+		button_flag[3];
+		adj_state = DECREASE_TIME;
+	}
 
-    if (button_flag[2]) {
-    	button_flag[2] = 0;
-    }
+	break;
+	case MANUAL:
+	if (button_flag[0] == 1) {
+		button_flag[0];
+		state = IDLE;
+	}
+	break;
 
-    if (button4_flag[3]) {
-    	button_flag[3] = 0;
-    }
-
-    //update_handlemode();
 }

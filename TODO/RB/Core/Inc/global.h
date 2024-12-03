@@ -13,23 +13,27 @@
 #include "led_display.h"
 
 
-#define AUTO 20
-#define MANUAL_RED 21
-#define MANUAL_GREEN 22
-#define MANUAL_AMBER 23
+#define IDLE 0
+#define AUTO 1
+#define ADJUST 2
+#define NIGHT 3
+#define MANUAL 4
 
-#define INIT 0
-#define RED_GREEN 1
-#define RED_AMBER 2
-#define GREEN_RED 3
-#define AMBER_RED 4
+#define ADJ_MODE 10
+#define INCREASE_TIME 11
+#define DECREASE_TIME 12
 
-extern int status;
-extern int mode;
+#define INIT 20
+#define RED_GREEN 21
+#define RED_AMBER 22
+#define GREEN_RED 23
+#define AMBER_RED 24
+
+extern int state;
+extern int adj_state;
+extern int auto_state;
 
 extern int red_time, amber_time, green_time;
-extern int temp_red,temp_amber,temp_green;
 extern int auto_timer,man_timer,error_timer;
-extern int first_time;
 
 #endif /* INC_GLOBAL_H_ */
