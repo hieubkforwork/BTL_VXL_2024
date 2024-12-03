@@ -25,7 +25,7 @@
 #define AMBER_RED 4
 
 extern int status;
-extern int modeh;
+extern int mode;
 
 extern int red_time, amber_time, green_time;
 extern int temp_red,temp_amber,temp_green;
