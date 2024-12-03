@@ -23,9 +23,10 @@
 /* USER CODE BEGIN Includes */
 #include "input_processing.h"
 #include "input_reading.h"
-#include "timer.h"
+#include "scheduler.h"
 #include "led_display.h"
 #include "i2c-lcd.h"
+#include "fsm_auto.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,7 +63,10 @@ static void MX_I2C1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void led(){
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
 
+}
 /* USER CODE END 0 */
 
 /**
@@ -103,6 +107,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   HAL_TIM_Base_Start_IT(&htim2);
   lcd_init();
+  SCH_ADD_TASK(fsm_auto, 10, 1000);
+  SCH_ADD_TASK(led, 1, 500);
+
 //  SCH_Init();
 //  //SCH_Add_Task(timeledlight, 0, 10);
 //  //SCH_Add_Task(Button_Reading, 0, 10);
@@ -115,14 +122,16 @@ int main(void)
 //  SCH_Add_Task(timeledlight, 500, 500);
 
 
-  setTimer(1,10);
+
+//  setTimer(1,10);
 //  setTimer(2,10);
-  setTimer(5,1000);
-  setTimer(6, 1000);
+//  setTimer(5,1000);
+//  setTimer(6, 1000);
 
   while (1)
   {
-	 fsm_for_input_processing();
+	  SCH_DISPATCH_TASK();
+//	 fsm_for_input_processing();
 //	 lcd_goto_XY(1, 0);
 //	 	lcd_send_string("hehe");
 //led_green_blink();
@@ -227,7 +236,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 63999;
+  htim2.Init.Prescaler = 7999;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -352,7 +361,9 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim){
+	SCH_UPDATE();
+}
 /* USER CODE END 4 */
 
 /**

@@ -8,7 +8,7 @@
  #include "main.h"
  #include "input_reading.h"
  #include "led_display.h"
-#include "timer.h"
+//#include "timer.h"
 
 uint8_t modemode = 1;
 
@@ -96,5 +96,5 @@ void fsm_for_input_processing(void) {
         updatemode(modemode);
     }
 
-    update_handlemode();
+    //update_handlemode();
 }
