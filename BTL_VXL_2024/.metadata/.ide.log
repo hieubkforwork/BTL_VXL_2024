@@ -770,3 +770,4 @@
 2024-12-03 16:14:52,661 [INFO] ApiDb:447 - User favorites MCUs=[]
 2024-12-03 16:14:52,662 [INFO] ApiDb:443 - Save user favorites file C:\Users\User/.stm32cubeide/favorites.boards.txt: 0 item(s)
 2024-12-03 16:14:52,662 [INFO] ApiDb:447 - User favorites Boards=[]
+2024-12-03 16:17:04,159 [ERROR] LogOutputStream:74 - [STDERR_REDIRECT] 
