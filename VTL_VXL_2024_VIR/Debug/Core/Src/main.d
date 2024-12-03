@@ -27,7 +27,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/fsm_auto.h ../Core/Inc/global.h ../Core/Inc/main.h \
  ../Core/Inc/button.h ../Core/Inc/led_light.h ../Core/Inc/lcd.h \
  ../Core/Inc/fsm_man.h ../Core/Inc/fsm_night.h ../Core/Inc/toggle_led.h \
- ../Core/Inc/scheduler.h
+ ../Core/Inc/scheduler.h ../Core/Inc/lcd.h
 
 ../Core/Inc/main.h:
 
@@ -100,3 +100,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/toggle_led.h:
 
 ../Core/Inc/scheduler.h:
+
+../Core/Inc/lcd.h:

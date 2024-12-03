@@ -6,9 +6,11 @@
  */
 
 #include "lcd.h"
+#include "string.h"
+#include "stdio.h"
 extern I2C_HandleTypeDef hi2c1;  // change your handler here accordingly
 
-#define SLAVE_ADDRESS_LCD (0x21 << 1) // change this according to ur setup
+#define SLAVE_ADDRESS_LCD (0x27 << 1) // change this according to ur setup
 
 void lcd_send_cmd (char cmd)
 {
