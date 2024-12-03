@@ -27,6 +27,7 @@
 #include "fsm_night.h"
 #include "toggle_led.h"
 #include "scheduler.h"
+#include "lcd.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,7 +99,7 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
-
+  lcd_init();
   SCH_ADD_TASK(toggle_led, 10, 1000);
   //SCH_ADD_TASK(fsm_auto_run, 1, 1000);
   //SCH_ADD_TASK(fsm_man_run, 1, 1000);
@@ -109,6 +110,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  lcd_clear_display();
+	  lcd_goto_XY(0,1);
+	  lcd_send_string("a");
 	  SCH_DISPATCH_TASK();
 
     /* USER CODE END WHILE */
@@ -208,7 +212,7 @@ static void MX_TIM2_Init(void)
   htim2.Instance = TIM2;
   htim2.Init.Prescaler = 7999;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 9;
+  htim2.Init.Period = 65535;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
