@@ -9,7 +9,6 @@
 #define INC_GLOBAL_H_
 
 #include "main.h"
-#include "button.h"
 #include "led_display.h"
 
 
@@ -18,6 +17,7 @@
 #define ADJUST 2
 #define NIGHT 3
 #define MANUAL 4
+
 
 #define ADJ_MODE 10
 #define INCREASE_TIME 11
@@ -29,10 +29,17 @@
 #define GREEN_RED 23
 #define AMBER_RED 24
 
+#define ADJ_INIT 29
+#define MODE_RED 30
+#define MODE_GREEN 31
+#define MODE_AMBER 32
+
 extern int state;
 extern int adj_state;
 extern int auto_state;
 
+extern int valid;
+extern int __mode;
 extern int red_time, amber_time, green_time;
 extern int auto_timer,man_timer,error_timer;
 

@@ -19,9 +19,11 @@ void getKeyInput(){
   KeyReg1[i] = KeyReg0[i];
   // Add your key
 
-  for (int i = 0; i < NUM_BUT; i++) {
-      KeyReg0[i] = HAL_GPIO_ReadPin(ports[i], pins[i]);
-  }
+
+  if(i==0) KeyReg0[0] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4);
+  else if(i==1) KeyReg0[1] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_10);
+  else if(i==2) KeyReg0[2] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_8);
+  else if(i==3) KeyReg0[3] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9);
 
 
   if ((KeyReg1[i] == KeyReg0[i]) && (KeyReg1[i] == KeyReg2[i])){

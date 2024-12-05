@@ -22,11 +22,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "input_processing.h"
-#include "input_reading.h"
 #include "scheduler.h"
 #include "led_display.h"
 #include "i2c-lcd.h"
+#include "global.h"
 #include "fsm_auto.h"
+#include "fsm_adjust.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -106,38 +107,15 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   HAL_TIM_Base_Start_IT(&htim2);
-  lcd_init();
+  SCH_ADD_TASK(fsm_for_input_processing,10,100);
+  //lcd_init();
   SCH_ADD_TASK(fsm_auto, 10, 1000);
-  SCH_ADD_TASK(led, 1, 500);
-
-//  SCH_Init();
-//  //SCH_Add_Task(timeledlight, 0, 10);
-//  //SCH_Add_Task(Button_Reading, 0, 10);
-//  //SCH_Add_Task(led1_test, 2, 1000);
-//
-//
-//  SCH_Add_Task(button_reading, 1, 1);
-//  SCH_Add_Task(handle_mode, 3, 10);
-//  SCH_Add_Task(fsm_for_input_processing, 4, 10);
-//  SCH_Add_Task(timeledlight, 500, 500);
-
-
-
-//  setTimer(1,10);
-//  setTimer(2,10);
-//  setTimer(5,1000);
-//  setTimer(6, 1000);
+  SCH_ADD_TASK(fsm_adjust,10,10);
+  //SCH_ADD_TASK(led, 1, 500);
 
   while (1)
   {
 	  SCH_DISPATCH_TASK();
-//	 fsm_for_input_processing();
-//	 lcd_goto_XY(1, 0);
-//	 	lcd_send_string("hehe");
-//led_green_blink();
-	  //SCH_Dispatch_Tasks();
-//	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_12);
-//	  HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

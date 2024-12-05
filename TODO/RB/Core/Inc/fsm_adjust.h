@@ -10,11 +10,8 @@
 
 
 #include "global.h"
-#define MODE_RED 30
-#define MODE_GREEN 31
-#define MODE_AMBER 32
-extern int __mode;
+
 void fsm_adjust();
-
-
+void error_led();
+void no_error_led();
 #endif /* INC_FSM_ADJUST_H_ */

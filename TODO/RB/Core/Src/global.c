@@ -11,7 +11,10 @@
 
 int state=IDLE;
 int auto_state=INIT;
+int adj_state=ADJ_INIT;
 
 int auto_timer = 0, led_catch_timer=0;
-int red_time=12, amber_time = 4, green_time = 8;
+int red_time=5, amber_time = 2, green_time = 3;
 int valid = 1;
+
+int __mode = MODE_RED;

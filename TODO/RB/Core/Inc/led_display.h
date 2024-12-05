@@ -10,34 +10,17 @@
 
 #include "main.h"
 
+void mode_light();
+void on_red1_led();
+void on_yellow1_led();
+void on_green1_led();
+ // 2: D9 - D10
+void on_red2_led();
+void on_yellow2_led();
+void on_green2_led();
+void off_led1();
+void off_led2();
 
 
-void led_red_blink();
-void led_green_blink();
-void led_yellow_blink();
 
-
-
-
-
-
-void updatemode(int modee);
-void display2number(int num1,int num2);
-
-void normalstate();
-void timeledlight();
-
-void modify_red_duration();
-void modify_yellow_duration();
-void modify_green_duration();
-
-void turn_green1();
-void turn_red1();
-
-void but2_red();
-void but3_red();
-void but2_ye();
-void but3_ye();
-void but2_gr();
-void but3_gr();
 #endif /* INC_LED_DISPLAY_H_ */

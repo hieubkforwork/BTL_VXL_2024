@@ -7,41 +7,65 @@
 
 #include "fsm_adjust.h"
 
-int __mode = MODE_RED;
-void fsm_adjust(){
-	if(state==ADJUST){
-	switch(man_state){
-	case ADJ_MODE:
-		switch(__mode){
-		case MODE_RED:
-			__mode = MODE_GREEN;
+void error_led() {
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, SET);
+}
+void no_error_led() {
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, RESET);
+}
+void fsm_adjust() {
+	if (state == ADJUST) {
+
+		switch (adj_state) {
+		case ADJ_INIT:
+			if (red_time != green_time + amber_time) {
+				error_led();
+				valid = 0;
+			} else {
+				no_error_led();
+				valid = 1;
+			}
 			break;
-		case MODE_GREEN:
-			__mode = MODE_AMBER;
+		case ADJ_MODE:
+			switch (__mode) {
+			case MODE_RED:
+				on_red1_led();
+				on_red2_led();
+				__mode = MODE_GREEN;
+				break;
+			case MODE_GREEN:
+				on_green1_led();
+				on_green2_led();
+				__mode = MODE_AMBER;
+				break;
+			case MODE_AMBER:
+				on_yellow1_led();
+				on_yellow2_led();
+				__mode = MODE_RED;
+				break;
+			}
+			adj_state = ADJ_INIT;
 			break;
-		case MODE_AMBER:
-			__mode = MODE_RED;
+		case INCREASE_TIME:
+			if (__mode == MODE_RED) {
+				red_time++;
+			} else if (__mode == MODE_GREEN) {
+				green_time++;
+			} else if (__mode == MODE_AMBER) {
+				amber_time++;
+			}
+			adj_state = ADJ_INIT;
+			break;
+		case DECREASE_TIME:
+			if (__mode == MODE_RED)
+				red_time--;
+			else if (__mode == MODE_GREEN)
+				green_time--;
+			else if (__mode == MODE_AMBER)
+				amber_time--;
+			adj_state = ADJ_INIT;
 			break;
 		}
-		break;
-	case INCREASE_TIME:
-		if(__mode==MODE_RED) red_time++;
-		else if(__mode==MODE_GREEN) green_time++;
-		else if(__mode==MODE_AMBER) amber_time++;
-		break;
-	case DECREASE_TIME:
-		if(__mode==MODE_RED) red_time--;
-		else if(__mode==MODE_GREEN) green_time--;
-		else if(__mode==MODE_AMBER) amber_time--;
-		break;
-	}
-	if(red_time != green_time+amber_time) {
-		error_led(); // chưa làm
-		valid=0;
-	}
-	else {
-		no_error_led(); // chưa làm
-		valid=1;
-	}
+
 	}
 }
