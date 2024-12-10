@@ -1,0 +1,14 @@
+../Core/Src/cdlc.c:29:13:CLCD_Delay	16	static
+../Core/Src/cdlc.c:34:13:CLCD_Write8	16	static
+../Core/Src/cdlc.c:60:13:CLCD_Write4	24	static
+../Core/Src/cdlc.c:97:6:CLCD_8BIT_Init	24	static
+../Core/Src/cdlc.c:142:6:CLCD_4BIT_Init	24	static
+../Core/Src/cdlc.c:183:6:CLCD_SetCursor	24	static
+../Core/Src/cdlc.c:206:6:CLCD_WriteChar	16	static
+../Core/Src/cdlc.c:217:6:CLCD_WriteString	16	static
+../Core/Src/cdlc.c:221:6:CLCD_Clear	16	static
+../Core/Src/cdlc.c:233:6:CLCD_ReturnHome	16	static
+../Core/Src/cdlc.c:245:6:CLCD_CursorOn	16	static
+../Core/Src/cdlc.c:257:6:CLCD_CursorOff	16	static
+../Core/Src/cdlc.c:269:6:CLCD_BlinkOn	16	static
+../Core/Src/cdlc.c:281:6:CLCD_BlinkOff	16	static

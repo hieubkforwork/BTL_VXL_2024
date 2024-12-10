@@ -1,0 +1,20 @@
+/*
+ * fsm_night.c
+ *
+ *  Created on: Dec 5, 2024
+ *      Author: User
+ */
+
+
+#include "fsm_night.h"
+#include "i2c-lcd.h"
+#include "led_display.h"
+#include <string.h>
+#include <stdio.h>
+void fsm_night(){
+	if (state == NIGHT) {
+		led_yellow_blink();
+
+	}
+
+}
